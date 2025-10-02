@@ -8,3 +8,7 @@ def hello_world():
 @zwhapp.route("/zwh/")
 def zwhtest():
     return "<p>this is a zwhtest page.</p></br>"
+
+@zwhapp.route("/index.html")
+def html():
+    return '$(index.html)'
