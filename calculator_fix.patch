@@ -1,0 +1,27 @@
+--- calculator.py	2025-10-02 14:05:31.481834296 +0800
++++ calculator_fixed.py	2025-10-02 14:06:16.963721285 +0800
+@@ -5,6 +5,9 @@
+     return a - b
+ 
+ def multiply(a, b):
++    # 修复：处理负数乘法
++    if b < 0:
++        a, b = -a, -b
+     result = 0
+     for i in range(b):
+         result += a
+@@ -12,6 +15,12 @@
+ 
+ def divide(a, b):
+     if b == 0:
+-        print("Error: Division by zero")
+-        return None
++        # 修复：抛出异常而不是返回 None
++        raise ValueError("Division by zero is not allowed")
+     return a / b
++
++# 新增功能：求余数
++def modulus(a, b):
++    if b == 0:
++        raise ValueError("Modulus by zero is not allowed")
++    return a % b
