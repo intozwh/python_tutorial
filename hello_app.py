@@ -1,14 +1,17 @@
+from datetime import datetime
+import calendar
+
 from flask import Flask
 
-zwhapp=Flask(__name__)
-@zwhapp.route("/")
+def dayname(time):
+  """Return the name of the day of the week for the given time."""
+  return calendar.day_name[time.weekday()]
+
+app = Flask(__name__)
+
+@app.route("/")
 def hello_world():
-    return "<p>hello, world!</p></br>"
-
-@zwhapp.route("/zwh/")
-def zwhtest():
-    return "<p>this is a zwhtest page.</p></br>"
-
-@zwhapp.route("/index.html")
-def html():
-    return '$(index.html)'
+    DAYNAMES = ["Monday", "Tuesday", "Wednesday",
+                "Thursday", "Friday", "Saturday", "Sunday"]
+    dayname = DAYNAMES[datetime.now().weekday()]
+    return f"<p>Hello, world! Happy {dayname}.</p>"
