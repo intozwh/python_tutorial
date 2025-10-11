@@ -1,4 +1,5 @@
 venv/
+venv-zwh/
 
 server.log
 *.pyc
